@@ -1,0 +1,45 @@
+#dicionário com os dados do numero de nucleotídeos
+
+dic_nucleotideos = {'C':0, 'G':0, 'A': 0, 'T': 0}
+
+# Como atualizar uma chave? dic_nucleotideos['C'] += 1 ---> dic_nucleotideos = {'C':1, 'G':0, 'A': 0, 'T': 0}
+
+#abrindo o arquivo txt com a sequencia desejada 
+arq = open('beclin1.txt', 'r')
+
+#aqui transformamos numa variável do tipo str
+sequencia = arq.read()
+
+#aqui separamos caracter por caracter em uma lista
+lista_nucleotideos = ([*sequencia])
+
+
+#aqui contabiliza-se os nucleotideos para dentro do dicionário dic_nucleotideos
+for nucleotide in lista_nucleotideos:
+  if nucleotide == 'C':
+    dic_nucleotideos['C'] += 1
+  
+  elif nucleotide == 'G':
+    dic_nucleotideos['G'] += 1
+  
+  elif nucleotide == 'A':
+    dic_nucleotideos['A'] += 1
+  
+  elif nucleotide == 'T':
+    dic_nucleotideos['T'] += 1
+  
+print(dic_nucleotideos)
+
+'''
+podemos adaptar o programa para calcular o Tm de um primer:
+Tm = [4(G + C) + 2(A + T)] °C
+
+Tm = (4*(dic_nucleotideos['G'] + dic_nucleotideos['C']) + 2*(dic_nucleotideos['A'] + dic_nucleotideos['T']))
+print(f'A temperatura Tm é igual à: {Tm}ºC')
+
+#conteúdo GC:
+
+GC_content = (dic_nucleotideos['G'] + dic_nucleotideos['C'])/(dic_nucleotideos['G'] + dic_nucleotideos['C'] + dic_nucleotideos['A'] + dic_nucleotideos['T'] )
+print(f'O conteúdo GC é igual à {GC_content}%')
+'''
+arq.close()
